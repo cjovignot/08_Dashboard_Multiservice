@@ -12,8 +12,7 @@ import Zelda from '../components/widgets/zelda';
 const Frame = () => {
 
     return (
-        <div className="flex">
-            <div className="flex-wrap">
+            <div id="widget_frame" className="max-w-full">
                 <Pokemon />
                 <Postit />
                 <SpeedRun />
@@ -24,7 +23,6 @@ const Frame = () => {
                 <Weather />
                 <Zelda />
             </div>
-        </div>
     );
 }
 

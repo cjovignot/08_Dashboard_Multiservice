@@ -25,3 +25,14 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+
+/* WIDGET FRAME */
+#widget_frame {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 80%;
+  justify-content: space-between;
+  height: 90vh;
+}
