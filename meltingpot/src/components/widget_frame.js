@@ -1,7 +1,7 @@
 // import { Zen_Antique } from 'next/font/google';
 import Pokemon from '../components/widgets/pokemon';
 import Postit from '../components/widgets/postIt';
-import SpeedRun from '../components/widgets/speedRun';
+import Speedrun from '../components/widgets/speedrun';
 import Spotify from '../components/widgets/spotify';
 import Tasty from '../components/widgets/tasty';
 import Trump from '../components/widgets/trump';
@@ -15,7 +15,7 @@ const Frame = () => {
             <div id="widget_frame" className="max-w-full">
                 <Pokemon />
                 <Postit />
-                <SpeedRun />
+                <Speedrun />
                 <Spotify />
                 <Tasty />
                 <Trump />
