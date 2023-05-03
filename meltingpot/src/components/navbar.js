@@ -10,7 +10,7 @@ const NavBar = () => {
                 </button>
             </div>
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <a className="btn btn-ghost normal-case text-xl">MELTING POT</a>
             </div>
             <label htmlFor="my-modal-login" className="btn">Login</label>
             <Login />
