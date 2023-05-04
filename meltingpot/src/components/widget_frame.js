@@ -12,7 +12,7 @@ import Zelda from '../components/widgets/zelda';
 const Frame = () => {
 
     return (
-            <div id="widget_frame" className="max-w-full">
+            <div id="widget_frame" className="bg-cyan-900 h-auto p-10">
                 <Pokemon />
                 <Postit />
                 <SpeedRun />

@@ -34,5 +34,12 @@ body {
   margin: auto;
   width: 80%;
   justify-content: space-between;
-  height: 90vh;
+}
+
+/* POKEMON */
+#pokemon_collapse {
+  padding: 0!important;
+}
+#pokemon_collapse th {
+  color: rgb(255, 132, 0);
 }
