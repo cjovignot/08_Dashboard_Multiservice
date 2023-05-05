@@ -45,6 +45,5 @@ set +o allexport
 gnome-terminal --title="Weather" -- node-dev weather/weather.js
 
 set -o allexport
-source zelda/.env
 set +o allexport
 gnome-terminal --title="Zelda" -- node-dev zelda/zelda.js
