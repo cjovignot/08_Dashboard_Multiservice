@@ -20,27 +20,31 @@ const Pokemon = () => {
     };
     
   return (
-    <div className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10">
-      <div className="card-body">
-        <h2 className="card-title">Pokemon</h2>
+    <div className="card w-128 image-full m-auto m-10 h-44"
+    style={{
+        backgroundImage: "url('https://1000marcas.net/wp-content/uploads/2020/01/Pokemon-Logo.png')",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+    }}>
+      <div className="card-body max-h-44 overflow-scroll mt-8">
         <form onSubmit={handleChange}>
           <input
             type="text"
-            placeholder="Ex: Bulbasaur"
-            className="input input-bordered w-full max-w-xs"
+            placeholder="Ex: Bulbizarre"
+            className="input input-bordered glass w-full text-black"
             value={pkmnName}
             onChange={(e) => setPkmnName(e.target.value)}
           />
-          <button type="submit">Search</button>
         </form>
 
 
-            <div className="card w-96 bg-base-100 shadow-xl">
-                <figure><img src={data.image} alt={data.name} className="w-40"/></figure>
-                <div className="card-body">
-                    <h2 className="card-title text-3xl font-bold">#{data.pokedexId} {data.name}</h2>
+                {data &&
+            <div className="card w-full pokemon_background text-black p-4 rounded-lg">
+                <div className="flex">
+                    <img src={data.image} alt={data.name} className="w-40"/>
+                    <div className="ml-5">
+                        <h2 className="card-title text-3xl font-bold">#{data.pokedexId} {data.name}</h2>
                         <p>Generation : {data.apiGeneration}</p>
-                        
                         {data.apiPreEvolution === "none" &&
                             <p>Pokemon de Base</p>
                         }
@@ -50,11 +54,13 @@ const Pokemon = () => {
                         {data && data.apiEvolutions.map((item, i) => (
                             <p key={i}>Evolution sup. : #{item.pokedexId} {item.name}</p>
                         ))}
-
+                    </div>
+                </div>
+                <div className="card-body -mt-5">
                         <div className="flex">
                             <h2 className="text-xl font-bold">Types : </h2>
                             {data && data.apiTypes.map((item, i) => (
-                                <img className="w-5 m-1" src={item.image}/>
+                                <img className="w-5 m-1 mb-5" src={item.image}/>
                             ))}
                         </div>
                         
@@ -107,6 +113,7 @@ const Pokemon = () => {
                         </table>
                 </div>
             </div>
+                }
       </div>
     </div>
   );

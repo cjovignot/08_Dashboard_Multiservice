@@ -82,7 +82,7 @@ const Spotify = ({ isLogged }) => {
   //   useEffect(() => {}, []);
 
   return (
-    <div className="card w-128 bg-neutral shadow-xl image-full m-auto m-10">
+    <div className="card w-128 bg-neutral shadow-xl image-full m-auto m-10 h-44">
       <div className="card-body">
         <h2 className="card-title">
           Spotify{" "}
@@ -92,7 +92,7 @@ const Spotify = ({ isLogged }) => {
           ></img>
         </h2>
         {!connected || !tokensAvailable ? (
-          <button onClick={connectToSpotify}>Connect to Spotify</button>
+          <button onClick={connectToSpotify} id="spotify_button">Connect to Spotify</button>
         ) : (
           <>
             {playlists.length === 0 && <p>Loading...</p>}

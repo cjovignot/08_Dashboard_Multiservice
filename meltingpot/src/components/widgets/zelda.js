@@ -49,14 +49,14 @@ const ZeldaComponent = () => {
 
   return (
     <div
-      className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10"
+      className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10 h-44"
       style={{
         backgroundImage:
           "url('https://cdn.wallpapersafari.com/60/38/pMJZzn.jpg')",
       }}
     >
       {" "}
-      <div className="card-body">
+      <div className="card-body max-h-44 overflow-scroll">
         <h2 className="card-title">Zelda</h2>
 
         <form>

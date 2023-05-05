@@ -16,27 +16,28 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 
 const Frame = ({ isLogged }) => {
   const layout = [
-    { i: "pokemon", x: 6, y: 1, w: 5, h: 2 },
-    { i: "postit", x: 6, y: 0, w: 5, h: 2 },
-    { i: "speedrun", x: 0, y: 2, w: 5, h: 1 },
-    { i: "spotify", x: 0, y: 8, w: 5, h: 3 },
-    { i: "tasty", x: 0, y: 4, w: 5, h: 1 },
-    { i: "trump", x: 0, y: 4, w: 5, h: 1 },
-    { i: "valorant", x: 0, y: 6, w: 5, h: 1 },
-    { i: "weather", x: 6, y: 6, w: 5, h: 2 },
-    { i: "zelda", x: 0, y: 6, w: 5, h: 1 },
+    { i: "zelda", x: 0, y: 0, w: 1, h: 2 },
+    { i: "weather", x: 0, y: 1, w: 1, h: 2 },
+    { i: "spotify", x: 0, y: 2, w: 1, h: 2 },
+    { i: "pokemon", x: 0, y: 3, w: 1, h: 2 },
+    { i: "postit", x: 0, y: 4, w: 1, h: 2 },
+    { i: "tasty", x: 0, y: 5, w: 1, h: 2 },
+    { i: "trump", x: 0, y: 6, w: 1, h: 2 },
+    { i: "valorant", x: 0, y: 7, w: 1, h: 2 },
+    { i: "speedrun", x: 0, y: 8, w: 1, h: 2 },
   ];
 
+
   return (
-    <div id="widget_frame" className="max-w-full">
       <ResponsiveGridLayout
-        className="layout"
+        id="widget_frame"
+        className="layout bg-gradient-to-r from-sky-500 to-indigo-500"
         layouts={{ lg: layout }}
-        breakpoints={{ lg: 1200 }}
-        cols={{ lg: 12 }}
-        rowHeight={150}
-        width={400}
-        margin={[10, 10]}
+        breakpoints={{ lg: 100 }}
+        cols={{ lg: 3 }}
+        rowHeight={90}
+        width="800px"
+        margin={[0, 10]}
         isResizable={false}
       >
         <div key="pokemon">
@@ -67,7 +68,7 @@ const Frame = ({ isLogged }) => {
           <Zelda />
         </div>
       </ResponsiveGridLayout>
-    </div>
+    // </div>
   );
 };
 

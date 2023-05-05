@@ -94,36 +94,49 @@ const PostIt = () => {
 
 
     return (
-        <div className="flex card shadow-xl m-auto m-10 glass mt-4 mb-4">
-          <div className="flex card-body">
-            {userCookie &&
-              <form onSubmit={createPostIt}>
-                <input type="text" placeholder="Title" className="input glass w-full text-black mb-2" value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
+        <div className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10">
+          <div id="postitcard" className="flex card-body max-h-44 overflow-scroll">
+            {/* {userCookie && */}
+            <div className="flex">
+                <form onSubmit={createPostIt} className="flex-col">
+                  <input type="text" placeholder="Title" className="input glass w-full text-black mb-5" value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
                   <textarea type="text" placeholder="Content" className="input glass w-full text-black p-3" value={newContent} onChange={(e) => setNewContent(e.target.value)}></textarea>
-                  <div className="flex justify-center">
-                      <button type="submit" className="btn btn-success w-20 text-center mt-4">Create</button>
-                  </div>
-              </form>
-            }
+                </form>
+                <div className="flex-col items-center">
+                  <a href="#myList" className="btn w-20 text-center ml-4 mb-5">MyPostIt</a>
+                  <button type="submit" className="btn btn-success w-20 text-center ml-4">Create</button>
+                </div>
+            </div>
+            {/* } */}
 
               {/* MAPPING ALL POSTS */}
-              {userCookie &&
+              {/* {userCookie && */}
                 <div className="flex justify-center">
-                    <h1 className="card-title text-3xl font-bold mt-5">My PostIts</h1>
+                    <h1 id="myList" className="card-title text-3xl font-bold mt-5">My PostIts</h1>
                 </div>
-              }
+              {/* } */}
 
-              {!userCookie &&
+              {/* {!userCookie &&
                 <div className="flex justify-center">
                   <h1 className="card-title text-xl font-bold">Please Login to use PostIt</h1>
                 </div>
-              }
+              } */}
               {data && userCookie && data.map((item, i) => (
-                <div key={i} className="card-body bg-base-100 rounded-lg m-5">
-                  <h1 className="card-title text-xl font-bold mb-5">{item.title}</h1>
-                  <p>{item.content}</p>
-                  <div className="flex justify-end">
-                      <button onClick={() => handleDelete(item._id, setData)} className="btn btn-error w-20">Delete</button>
+                <div>
+                  <div key={i} className="card-body rounded-lg m-5 p-0"
+                    style={{
+                      backgroundImage:
+                        "url('http://clipart-library.com/images/kcKoj8p5i.png')",
+                        backgroundSize: '100%',
+                        backgroundHeight: 'auto',
+                        backgroundRepeat: 'none',
+                      }}
+                  >
+                    {/* <div className="flex justify-end"> */}
+                    <button onClick={() => handleDelete(item._id, setData)} className="btn btn-error w-18 rounded-full absolute text-center absolute ml-72">x</button>
+                    {/* </div> */}
+                    <h1 className="card-title text-xl text-black font-bold mb-5 z-10 ml-10 mt-10">{item.title}</h1>
+                    <p className="z-10 text-black ml-10 pb-5 w-60">{item.content}</p>
                   </div>
                 </div>
               ))}
