@@ -54,29 +54,29 @@ const ZeldaComponent = () => {
         <h1>Zelda</h1>
         <form>
           <select
-            className="select w-full max-w-xs"
+            className="select w-full max-w-xs text-black"
             type="text"
             id="entry"
             value={entry}
             onChange={handleInputChange}
             placeholder="Select monster entry"
           >
-            <option value="" disabled>
+            <option className="text-black" value="" disabled>
               Select a monster
             </option>
             {monsters.map((monster, index) => (
-              <option key={index} value={monster.id}>
+              <option className="text-black" key={index} value={monster.id}>
                 {monster.name}
               </option>
             ))}
           </select>
         </form>
         {loading && <div>Loading...</div>}
-        {error && <div>{error}</div>}
+
         {data && (
           <div>
-            {/* Render the data as needed */}
-            <pre>{JSON.stringify(data, null, 2)}</pre>
+            {data.name}
+            git <pre>{JSON.stringify(data, null, 2)}</pre>
           </div>
         )}
       </div>
