@@ -9,5 +9,3 @@ const Trump = () => {
         </div>
     );
 }
-
-export default Trump;

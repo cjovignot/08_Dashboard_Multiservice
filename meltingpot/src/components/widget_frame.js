@@ -4,7 +4,7 @@ import Pokemon from "../components/widgets/pokemon";
 import Postit from "../components/widgets/postIt";
 import SpeedRun from "../components/widgets/speedrun";
 import Spotify from "../components/widgets/spotify";
-import Tasty from "../components/widgets/tasty";
+import Tasty from "./widgets/food";
 import Trump from "../components/widgets/trump";
 import Valorant from "../components/widgets/valorant";
 import Weather from "../components/widgets/weather";
