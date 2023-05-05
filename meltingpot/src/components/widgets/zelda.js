@@ -13,7 +13,7 @@ const ZeldaComponent = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:3002/api/v2/entry/${entryId}`
+        `http://localhost:3006/api/v2/entry/${entryId}`
       );
       setData(response.data);
       setLoading(false);
@@ -28,7 +28,7 @@ const ZeldaComponent = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3002/api/v2/category/monsters"
+          "http://localhost:3006/api/v2/category/monsters"
         );
         setMonsters(response.data.data);
         console.log("monster list", response.data.data);
