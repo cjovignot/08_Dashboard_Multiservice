@@ -110,6 +110,43 @@ router.get("/token-status", authMiddleware, async (req, res) => {
   }
 });
 
+async function refreshAccessToken(user_id) {
+  try {
+    const user = await SpotifyToken.findOne({ user_id });
+
+    if (!user) {
+      return { success: false, message: "User not found" };
+    }
+
+    const response = await axios.post(
+      spotifyTokenUrl,
+      querystring.stringify({
+        grant_type: "refresh_token",
+        refresh_token: user.spotifyRefreshToken,
+        client_id: clientId,
+        client_secret: clientSecret,
+      }),
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
+
+    const { access_token } = response.data;
+
+    await SpotifyToken.findOneAndUpdate(
+      { user_id },
+      { spotifyAccessToken: access_token }
+    );
+
+    return { success: true, access_token };
+  } catch (err) {
+    console.error(err);
+    return { success: false, message: "Error refreshing access token" };
+  }
+}
+
 router.get("/playlists", authMiddleware, async (req, res) => {
   const { user_id } = req.user;
 
@@ -120,16 +157,36 @@ router.get("/playlists", authMiddleware, async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const response = await axios.get(`${spotifyApiUrl}/me/playlists`, {
-      headers: {
-        Authorization: `Bearer ${user.spotifyAccessToken}`,
-      },
-    });
+    const fetchPlaylists = async (accessToken) => {
+      const response = await axios.get(`${spotifyApiUrl}/me/playlists`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      return response;
+    };
+
+    let response;
+
+    try {
+      response = await fetchPlaylists(user.spotifyAccessToken);
+    } catch (error) {
+      if (error.response.status === 401) {
+        // Access token expired, refresh the token and retry fetching playlists
+        const refreshResult = await refreshAccessToken(user_id);
+        if (refreshResult.success) {
+          response = await fetchPlaylists(refreshResult.access_token);
+        } else {
+          return res.status(500).json({ message: refreshResult.message });
+        }
+      } else {
+        throw error;
+      }
+    }
 
     res.status(200).json(response.data);
   } catch (err) {
     console.error(err);
-    // console.log("My token", user.spotifyAccessToken);
     res.status(500).json({ message: "Error fetching playlists" });
   }
 });

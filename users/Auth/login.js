@@ -2,7 +2,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/Users");
-const SpotifyToken = require("../models/SpotifyToken"); // Add this line
+const SpotifyToken = require("../models/SpotifyToken");
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -26,14 +26,19 @@ router.post("/", async (req, res) => {
       expiresIn: "2h",
     });
 
-    // Update JWT token in the SpotifyToken collection
     await SpotifyToken.findOneAndUpdate(
       { user_id: user._id },
       { Jwttoken: token },
       { new: true }
     );
 
-    res.status(200).json({ message: "User logged in successfully", token });
+    res
+      .status(200)
+      .json({
+        message: "User logged in successfully",
+        token,
+        userId: user._id,
+      });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Server error" });

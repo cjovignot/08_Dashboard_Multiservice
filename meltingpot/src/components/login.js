@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const Login = ({ isLogged, setIsLogged }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault(); // Prevent the form from submitting normally
+
     try {
       const response = await axios.post("http://localhost:3009/login", {
         email,
@@ -16,6 +19,9 @@ const Login = ({ isLogged, setIsLogged }) => {
       const jwtToken = response.data.token;
       localStorage.setItem("userJwtToken", jwtToken);
       console.log("JWT Token:", jwtToken);
+
+      const userId = response.data.userId;
+      Cookies.set("userId", userId); // Set a cookie with the user ID value
 
       setIsLogged(true);
       document.getElementById("my-modal-login").checked = false;
@@ -30,48 +36,52 @@ const Login = ({ isLogged, setIsLogged }) => {
       <input type="checkbox" id="my-modal-login" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
-          <div className="form-control w-full">
-            <label className="label">
-              <span className="label-text">Email</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Type here"
-              className="input input-bordered w-full"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="form-control w-full">
-            <label className="label">
-              <span className="label-text">Password</span>
-            </label>
-            <input
-              type="password"
-              placeholder="Type here"
-              className="input input-bordered w-full"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          {errorMessage && (
-            <div className="text-error mt-2 text-sm">{errorMessage}</div>
-          )}
-          <div className="flex mt-5 justify-between">
-            <label
-              htmlFor="my-modal-login"
-              className="btn btn-outline btn-error"
-            >
-              Cancel
-            </label>
-            <button
-              htmlFor="my-modal-login"
-              onClick={handleLogin}
-              className="btn btn-outline btn-success"
-            >
-              Login
-            </button>
-          </div>
+          <form onSubmit={handleLogin}>
+            {" "}
+            {/* Add a form element and handle the submit event */}
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Type here"
+                className="input input-bordered w-full"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <input
+                type="password"
+                placeholder="Type here"
+                className="input input-bordered w-full"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            {errorMessage && (
+              <div className="text-error mt-2 text-sm">{errorMessage}</div>
+            )}
+            <div className="flex mt-5 justify-between">
+              <label
+                htmlFor="my-modal-login"
+                className="btn btn-outline btn-error"
+              >
+                Cancel
+              </label>
+              <button
+                type="submit" // Update the button to be a submit button
+                htmlFor="my-modal-login"
+                className="btn btn-outline btn-success"
+              >
+                Login
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

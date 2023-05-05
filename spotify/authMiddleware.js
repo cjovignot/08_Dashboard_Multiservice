@@ -4,7 +4,7 @@ module.exports = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
-    return res.status(401).json({ message: "No token provided" });
+    return res.status(401).json({ message: "No jwt provided" });
   }
 
   const parts = authHeader.split(" ");
@@ -21,7 +21,7 @@ module.exports = (req, res, next) => {
 
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
-      return res.status(401).json({ message: "Invalid token" });
+      return res.status(401).json({ message: "Invalid jwt token" });
     }
 
     req.user = { user_id: decoded.id };
