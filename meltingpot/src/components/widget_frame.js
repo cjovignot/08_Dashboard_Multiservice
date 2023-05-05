@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { WidthProvider, Responsive } from "react-grid-layout";
 import Pokemon from "../components/widgets/pokemon";
 import Postit from "../components/widgets/postIt";
-import SpeedRun from "../components/widgets/speedRun";
+import SpeedRun from "../components/widgets/speedrun";
 import Spotify from "../components/widgets/spotify";
 import Tasty from "../components/widgets/tasty";
 import Trump from "../components/widgets/trump";
