@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Cookies from 'js-cookie';
 
 const PostIt = () => {
 
   const [data, setData] = useState([]);
   const [newTitle, setNewTitle] = useState('');
   const [newContent, setNewContent] = useState('');
-
+  const userCookie = Cookies.get("userId");
+  
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (userCookie) {
+      fetchData();
+    }
+  }, [userCookie]);
 
+  
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3010");
+      console.log(userCookie);
+      const response = await axios.get(`http://localhost:3010/user/${userCookie}`);
       setData(response.data);
       console.log(response.data);
     } catch (error) {
@@ -22,10 +28,6 @@ const PostIt = () => {
   };
 
 // CREATE POSTIT
-
-  // useEffect(() => {
-  //   createPostIt();
-  // }, []);
 
     const createPostIt = async (e) => {
         e.preventDefault();
@@ -37,10 +39,11 @@ const PostIt = () => {
             const response = await axios.post(`http://localhost:3010/new`, {
                 title: newTitle,
                 content: newContent,
+                user_id: userCookie,
             });
             console.log(response);
 
-            setData((prevData) => [...prevData, response.data]);
+            fetchData();
             setNewTitle('');
             setNewContent('');
           } catch (error) {
@@ -75,81 +78,56 @@ const PostIt = () => {
   // };
 
 
-  const handleDelete = async (postiIt_id, setData) => {
+  const handleDelete = async (postiIt_id) => {
     try {
       const response = await axios.delete(
         `http://localhost:3010/delete/${postiIt_id}`
       );
       setData((prevPostIt) =>
-      prevPostIt.filter((item) => item._id !== postiIt_id)
+        prevPostIt.filter((item) => item._id !== postiIt_id)
       );
     } catch (error) {
       console.error(error);
     }
   };
+  
 
 
     return (
         <div className="flex card shadow-xl m-auto m-10 glass mt-4 mb-4">
-            <div className="flex card-body">
-                <div className="flex justify-end">
-                    <img className="w-80 -m-2" src=""/>
-                </div>
-                <form onSubmit={createPostIt}>
-                    <input
-                        type="text"
-                        placeholder="Title"
-                        className="input glass w-full text-black mb-2"
-                        value={newTitle}
-                        onChange={(e) => setNewTitle(e.target.value)}
-                    />
-                    <textarea
-                        type="text"
-                        placeholder="Content"
-                        className="input glass w-full text-black p-3"
-                        value={newContent}
-                        onChange={(e) => setNewContent(e.target.value)}
-                    ></textarea>
-                    <div className="flex justify-center">
-                        <button type="submit" className="btn btn-success w-20 text-center mt-4">Create</button>
-                    </div>
-                </form>
+          <div className="flex card-body">
+            {userCookie &&
+              <form onSubmit={createPostIt}>
+                <input type="text" placeholder="Title" className="input glass w-full text-black mb-2" value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
+                  <textarea type="text" placeholder="Content" className="input glass w-full text-black p-3" value={newContent} onChange={(e) => setNewContent(e.target.value)}></textarea>
+                  <div className="flex justify-center">
+                      <button type="submit" className="btn btn-success w-20 text-center mt-4">Create</button>
+                  </div>
+              </form>
+            }
 
-
-
-                {/* MAPPING ALL POSTS */}
+              {/* MAPPING ALL POSTS */}
+              {userCookie &&
                 <div className="flex justify-center">
                     <h1 className="card-title text-3xl font-bold mt-5">My PostIts</h1>
                 </div>
-            
-                {data && data.map((item, i) => (
-                    <div key={i} className="card-body bg-base-100 rounded-lg m-5">
-                        <input
-                            type="text"
-                            className="input glass w-full text-black mb-2 card-title"
-                            // placeholder={item.title}
-                            // onChange={(e) => setTitleContent(e.target.value)}
-                            value={item.title}
-                            />
-                        <textarea
-                            type="text"
-                            className="input glass w-full text-black p-3 h-auto"
-                            // placeholder={item.content}
-                            // onChange={(e) => setContentPostIt(e.target.value)}
-                            value={item.content}
-                            ></textarea>
-                        <div className="flex justify-between">
-                            <button
-                              // onClick={() => handleEdit(item._id)}
-                              className="btn btn-info w-20"
-                              value={item._id}>Edit</button>
-                            <button onClick={() => handleDelete(item._id, setData)} className="btn btn-error w-20">Delete</button>
-                        </div>
-                    </div>
-                ))}
-            </div>
+              }
 
-
+              {!userCookie &&
+                <div className="flex justify-center">
+                  <h1 className="card-title text-xl font-bold">Please Login to use PostIt</h1>
+                </div>
+              }
+              {data && userCookie && data.map((item, i) => (
+                <div key={i} className="card-body bg-base-100 rounded-lg m-5">
+                  <h1 className="card-title text-xl font-bold mb-5">{item.title}</h1>
+                  <p>{item.content}</p>
+                  <div className="flex justify-end">
+                      <button onClick={() => handleDelete(item._id, setData)} className="btn btn-error w-20">Delete</button>
+                  </div>
+                </div>
+              ))}
+          </div>
         </div>
     );
 }

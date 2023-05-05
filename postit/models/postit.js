@@ -6,7 +6,10 @@ const postItSchema = new Schema({
         type: String, required: true
     },
     content: {
-        type: String,required: true
+        type: String, required: true
+    },
+    user_id: {
+        type: String, required: true
     },
 });
 

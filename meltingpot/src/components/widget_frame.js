@@ -55,7 +55,7 @@ const Frame = ({ isLogged }) => {
 
   return (
     <div id="widget_frame" className="max-w-full">
-      <ResponsiveGridLayout
+      {/* <ResponsiveGridLayout
         className="layout"
         layouts={{ lg: layout }}
         breakpoints={{ lg: 1200 }}
@@ -66,35 +66,35 @@ const Frame = ({ isLogged }) => {
         isResizable={false}
         autoSize={true}
         onLayoutChange={onLayoutChange}
-      >
-        <div key="pokemon">
+      > */}
+        {/* <div key="pokemon">
           <Pokemon />
-        </div>
+        </div> */}
         <div key="postit">
-          <Postit />
+          <Postit isLogged={isLogged}/>
         </div>
-        <div key="speedrun">
+        {/* <div key="speedrun">
           <SpeedRun />
-        </div>
-        <div key="tasty">
+        </div> */}
+        {/* <div key="tasty">
           <Tasty />
-        </div>
-        <div key="trump">
+        </div> */}
+        {/* <div key="trump">
           <Trump />
-        </div>
-        <div key="valorant">
+        </div> */}
+        {/* <div key="valorant">
           <Valorant />
-        </div>
-        <div key="weather">
+        </div> */}
+        {/* <div key="weather">
           <Weather />
-        </div>
-        <div key="zelda">
+        </div> */}
+        {/* <div key="zelda">
           <Zelda />
-        </div>
-        <div key="spotify">
+        </div> */}
+        {/* <div key="spotify">
           <Spotify isLogged={isLogged} />
-        </div>
-      </ResponsiveGridLayout>
+        </div> */}
+      {/* </ResponsiveGridLayout> */}
     </div>
   );
 };
