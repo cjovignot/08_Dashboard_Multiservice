@@ -8,8 +8,7 @@ const Login = ({ isLogged, setIsLogged }) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // Prevent the form from submitting normally
-
+    e.preventDefault();
     try {
       const response = await axios.post("http://localhost:3009/login", {
         email,
@@ -21,7 +20,7 @@ const Login = ({ isLogged, setIsLogged }) => {
       console.log("JWT Token:", jwtToken);
 
       const userId = response.data.userId;
-      Cookies.set("userId", userId); // Set a cookie with the user ID value
+      Cookies.set("userId", userId);
 
       setIsLogged(true);
       document.getElementById("my-modal-login").checked = false;
@@ -38,7 +37,6 @@ const Login = ({ isLogged, setIsLogged }) => {
         <div className="modal-box">
           <form onSubmit={handleLogin}>
             {" "}
-            {/* Add a form element and handle the submit event */}
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Email</span>
