@@ -82,7 +82,6 @@ const signup = ({ isLogged, setIsLogged }) => {
               <label
                 htmlFor="my-modal-signup"
                 className="btn btn-outline btn-error"
-                onClick={() => setIsModalOpen(false)} // Close modal on cancel
               >
                 Cancel
               </label>
