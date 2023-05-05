@@ -27,31 +27,31 @@ const Frame = ({ isLogged }) => {
     { i: "zelda", x: 6, y: 2, w: 5, h: 2 },
   ]);
 
-  const onLayoutChange = (newLayout) => {
-    let updatedLayout = [];
-    let prevY = 0;
+  // const onLayoutChange = (newLayout) => {
+  //   let updatedLayout = [];
+  //   let prevY = 0;
 
-    newLayout.forEach((item, index) => {
-      const element = document.getElementById(item.i);
+  //   newLayout.forEach((item, index) => {
+  //     const element = document.getElementById(item.i);
 
-      if (element) {
-        const height = window
-          .getComputedStyle(element)
-          .getPropertyValue("height");
-        const newHeight = Math.ceil(parseInt(height, 10) / 80);
+  //     if (element) {
+  //       const height = window
+  //         .getComputedStyle(element)
+  //         .getPropertyValue("height");
+  //       const newHeight = Math.ceil(parseInt(height, 10) / 80);
 
-        if (index > 0) {
-          prevY += updatedLayout[index - 1].h;
-        }
+  //       if (index > 0) {
+  //         prevY += updatedLayout[index - 1].h;
+  //       }
 
-        updatedLayout.push({ ...item, h: newHeight, y: prevY });
-      } else {
-        updatedLayout.push(item);
-      }
-    });
+  //       updatedLayout.push({ ...item, h: newHeight, y: prevY });
+  //     } else {
+  //       updatedLayout.push(item);
+  //     }
+  //   });
 
-    setLayout(updatedLayout);
-  };
+  //   setLayout(updatedLayout);
+  // };
 
   return (
     <div id="widget_frame" className="max-w-full">
@@ -65,7 +65,7 @@ const Frame = ({ isLogged }) => {
         margin={[10, 10]}
         isResizable={false}
         autoSize={true}
-        onLayoutChange={onLayoutChange}
+        // onLayoutChange={onLayoutChange}
       >
         <div key="pokemon">
           <Pokemon />

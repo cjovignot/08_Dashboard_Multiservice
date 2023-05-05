@@ -3,7 +3,7 @@ const axios = require("axios");
 const cors = require("cors");
 const app = express();
 app.use(cors());
-const PORT = 3002;
+const PORT = 3006;
 
 // Route to forward requests to the Zelda API
 app.use("/api/v2/entry/:entry", async (req, res) => {

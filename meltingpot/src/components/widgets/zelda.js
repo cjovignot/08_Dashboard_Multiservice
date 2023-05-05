@@ -8,11 +8,12 @@ const ZeldaComponent = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [monsters, setMonsters] = useState([]);
-  const fetchData = async () => {
+  const fetchData = async (entryId) => {
+    if (!entryId) return;
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:3002/api/v2/entry/${entry}`
+        `http://localhost:3002/api/v2/entry/${entryId}`
       );
       setData(response.data);
       setLoading(false);
@@ -43,15 +44,21 @@ const ZeldaComponent = () => {
 
   const handleInputChange = async (e) => {
     setEntry(e.target.value);
-    await fetchData();
+    fetchData(e.target.value);
   };
 
   return (
-    <div className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10">
+    <div
+      className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10"
+      style={{
+        backgroundImage:
+          "url('https://cdn.wallpapersafari.com/60/38/pMJZzn.jpg')",
+      }}
+    >
+      {" "}
       <div className="card-body">
         <h2 className="card-title">Zelda</h2>
 
-        <h1>Zelda</h1>
         <form>
           <select
             className="select w-full max-w-xs text-black"
@@ -75,8 +82,36 @@ const ZeldaComponent = () => {
 
         {data && (
           <div>
-            {data.name}
-            git <pre>{JSON.stringify(data, null, 2)}</pre>
+            <h3>
+              <b>Name:</b> {data.data.name}
+            </h3>
+            <p>
+              {" "}
+              <b>Description:</b> {data.data.description}
+            </p>
+            <h3>
+              <img src={data.data.image}></img>
+            </h3>
+            <h4>
+              <b>Common Locations:</b>
+            </h4>
+            <ul>
+              {data.data.common_locations?.map((location, index) => (
+                <li key={index}>{location}</li>
+              ))}
+            </ul>
+            <h4>
+              <b>Drops:</b>
+            </h4>
+            {data.data.drops?.length > 0 ? (
+              <ul>
+                {data.data.drops.map((drop, index) => (
+                  <li key={index}>{drop}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>No drops available</p>
+            )}
           </div>
         )}
       </div>

@@ -3,7 +3,20 @@ import axios from "axios";
 
 const Spotify = ({ isLogged }) => {
   if (!isLogged) {
-    return <div>Please log in to view your Spotify playlists.</div>;
+    return (
+      <div className="card w-128 bg-neutral shadow-xl image-full m-auto m-10">
+        <div className="card-body">
+          <h2 className="card-title">
+            Spotify{" "}
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png"
+              width={40}
+            ></img>
+          </h2>
+          <div>Please log in to enable Spotify.</div>
+        </div>
+      </div>
+    );
   }
   const [playlists, setPlaylists] = useState([]);
   const [connected, setConnected] = useState(false);
@@ -69,9 +82,15 @@ const Spotify = ({ isLogged }) => {
   //   useEffect(() => {}, []);
 
   return (
-    <div className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10">
+    <div className="card w-128 bg-neutral shadow-xl image-full m-auto m-10">
       <div className="card-body">
-        <h2 className="card-title">Spotify</h2>
+        <h2 className="card-title">
+          Spotify{" "}
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png"
+            width={40}
+          ></img>
+        </h2>
         {!connected || !tokensAvailable ? (
           <button onClick={connectToSpotify}>Connect to Spotify</button>
         ) : (
