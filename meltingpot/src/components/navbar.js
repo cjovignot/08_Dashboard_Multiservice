@@ -1,8 +1,10 @@
 import Login from "../components/login";
-
+import Signup from "../components/signup";
+import Cookies from "js-cookie";
 const NavBar = ({ isLogged, setIsLogged }) => {
   const handleLogout = () => {
     localStorage.removeItem("userJwtToken");
+    Cookies.remove("userId");
     setIsLogged(false);
   };
 
@@ -28,6 +30,13 @@ const NavBar = ({ isLogged, setIsLogged }) => {
       <div className="flex-1">
         <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
       </div>
+
+      {!isLogged && (
+        <label htmlFor="my-modal-signup" className="btn">
+          Sign up
+        </label>
+      )}
+      <Signup />
       {isLogged ? (
         <button onClick={handleLogout} className="btn">
           Logout
