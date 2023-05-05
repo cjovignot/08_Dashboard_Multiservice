@@ -62,21 +62,25 @@ const Pokemon = () => {
                         <>
                         <table className="text-center border">
                             <thead>
-                                <th>HP</th>
-                                <th>ATT</th>
-                                <th>DEF</th>
-                                <th>AT_SPE</th>
-                                <th>DEF_SPE</th>
-                                <th>SPEED</th>
+                                <tr>
+                                    <th>HP</th>
+                                    <th>ATT</th>
+                                    <th>DEF</th>
+                                    <th>AT_SPE</th>
+                                    <th>DEF_SPE</th>
+                                    <th>SPEED</th>
+                                </tr>
                             </thead>
-                            <tr>
-                                <td>{data.stats.HP}</td>
-                                <td>{data.stats.attack}</td>
-                                <td>{data.stats.defense}</td>
-                                <td>{data.stats.special_attack}</td>
-                                <td>{data.stats.special_defense}</td>
-                                <td>{data.stats.speed}</td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>{data.stats.HP}</td>
+                                    <td>{data.stats.attack}</td>
+                                    <td>{data.stats.defense}</td>
+                                    <td>{data.stats.special_attack}</td>
+                                    <td>{data.stats.special_defense}</td>
+                                    <td>{data.stats.speed}</td>
+                                </tr>
+                            </tbody>
                         </table>
                         </>
                         }
@@ -84,18 +88,22 @@ const Pokemon = () => {
 
                         <table className="border">
                             <thead>
-                                <th>Multi</th>
-                                <th>Effect</th>
-                                <th>Type</th>
-                            </thead>
-                            {data && data.apiResistances.map((item, i) => (
-                                // <p key={i}>{item.name} {item.damage_multiplier}</p>
                                 <tr>
-                                    <td>{item.damage_multiplier}</td>
-                                    <td>{item.damage_relation}</td>
-                                    <td>{item.name}</td>
+                                    <th>Multi</th>
+                                    <th>Effect</th>
+                                    <th>Type</th>
                                 </tr>
-                            ))}
+                            </thead>
+                            <tbody>
+                                {data && data.apiResistances.map((item, i) => (
+                                    // <p key={i}>{item.name} {item.damage_multiplier}</p>
+                                    <tr>
+                                        <td>{item.damage_multiplier}</td>
+                                        <td>{item.damage_relation}</td>
+                                        <td>{item.name}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
                         </table>
                 </div>
             </div>
