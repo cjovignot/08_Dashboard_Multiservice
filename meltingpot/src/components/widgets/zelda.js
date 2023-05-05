@@ -51,10 +51,10 @@ const ZeldaComponent = () => {
       <div className="card-body">
         <h2 className="card-title">Zelda</h2>
 
-        <h1>Select a monster</h1>
+        <h1>Zelda</h1>
         <form>
-          <label htmlFor="entry">Entry:</label>
           <select
+            className="select w-full max-w-xs"
             type="text"
             id="entry"
             value={entry}
