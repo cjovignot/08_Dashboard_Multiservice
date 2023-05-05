@@ -18,12 +18,9 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 
@@ -35,4 +32,10 @@ body {
   width: 80%;
   justify-content: space-between;
   height: 90vh;
+}
+
+.widget {
+  border: 1px solid #ddd;
+  background-color: #f1f1f1;
+  padding: 10px;
 }
