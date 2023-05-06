@@ -47,3 +47,6 @@ gnome-terminal --title="Weather" -- node-dev weather/weather.js
 set -o allexport
 set +o allexport
 gnome-terminal --title="Zelda" -- node-dev zelda/zelda.js
+
+cd ./meltingpot/
+npm run dev
