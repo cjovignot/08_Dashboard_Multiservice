@@ -24,7 +24,7 @@ const Weather = () => {
     }
 
     return (
-        <div className="card w-128 image-full m-auto m-10"
+        <div className="card w-auto image-full ml-10 mr-10 mb-10"
         style={{
             backgroundImage: "url('https://gifdb.com/images/file/sick-of-this-windy-weather-haax9j0nybc9wrba.gif')",
             backgroundPosition: "top",
@@ -55,10 +55,10 @@ const Weather = () => {
 
 
             <div className="card-body max-h-44 overflow-scroll">
-                <div className="flex items-center">
+                <div className="flex justify-between items-center">
                     <img src="https://www.pngall.com/wp-content/uploads/11/Weather-PNG-Images.png" className="w-28"></img>
                     {/* MODAL BUTTON */}
-                    <label htmlFor="my-modal-4" className="btn ml-20 w-40">Select a city</label>
+                    <label htmlFor="my-modal-4" className="btn w-auto">Select a city</label>
                 </div>
 
                 {weather &&

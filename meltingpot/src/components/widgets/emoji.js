@@ -19,7 +19,7 @@ const getEmoji = () => {
   };
 
   return (
-    <div className="card w-128 shadow-xl image-full m-auto m-10 h-44"
+    <div className="card w-auto shadow-xl image-full ml-10 mr-10 mb-10 h-44"
     style={{
         backgroundImage: "url('https://abilitynet.org.uk/sites/abilitynet.org.uk/files/admin/Emojis.png')",
         backgroundPosition: "center",

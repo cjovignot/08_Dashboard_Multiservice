@@ -94,7 +94,7 @@ const PostIt = () => {
 
 
     return (
-        <div className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10"
+        <div className="card w-auto bg-base-100 shadow-xl image-full  ml-10 mr-10 mb-10"
         style={{
             backgroundImage: "url('https://i0.wp.com/www.collectedmiscellany.com/wp-content/uploads/2021/07/background-brown-cork-board-texture-close-up_77190-2560.jpeg?ssl=1')",
             backgroundPosition: "center",

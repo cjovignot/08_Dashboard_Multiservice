@@ -20,7 +20,7 @@ const getFood = () => {
   };
 
   return (
-    <div className="card w-128 shadow-xl image-full m-auto m-10 h-44"
+    <div className="card w-auto shadow-xl image-full ml-10 mr-10 mb-10 h-44"
     style={{
         backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1920px-Good_Food_Display_-_NCI_Visuals_Online.jpg')",
         backgroundPosition: "center",

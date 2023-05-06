@@ -27,13 +27,20 @@ body {
   display: none;
 }
 
+@media only screen and (max-width: 600px) {
+  html, body {
+    min-width: 900px;
+  }
+}
 
 /* WIDGET FRAME */
 #widget_frame {
   display: flex;
   margin: auto;
-  padding-top: 50px;
   scroll-behavior: smooth;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 10px;
 }
 
 .widget {

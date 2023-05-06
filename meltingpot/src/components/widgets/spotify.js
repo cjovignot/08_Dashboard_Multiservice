@@ -82,7 +82,7 @@ const Spotify = ({ isLogged }) => {
   //   useEffect(() => {}, []);
 
   return (
-    <div className="card w-128 bg-neutral shadow-xl image-full m-auto m-10 h-44">
+    <div className="card w-auto bg-neutral shadow-xl image-full  ml-10 mr-10 mb-10 h-44">
       <div className="card-body max-h-44 overflow-scroll">
         <h2 className="card-title">
           Spotify{" "}

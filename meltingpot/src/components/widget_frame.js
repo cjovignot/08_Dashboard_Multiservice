@@ -33,7 +33,7 @@ const Frame = ({ isLogged }) => {
         id="widget_frame"
         className="layout bg-gradient-to-r from-sky-500 to-indigo-500"
         layouts={{ lg: layout }}
-        breakpoints={{ lg: 100 }}
+        breakpoints={{ lg: 3 }}
         cols={{ lg: 3 }}
         rowHeight={90}
         width="800px"

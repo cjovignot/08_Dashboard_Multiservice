@@ -20,7 +20,7 @@ const Pokemon = () => {
     };
     
   return (
-    <div className="card w-128 image-full m-auto m-10 h-44"
+    <div className="card w-auto image-full ml-10 mr-10 mb-10 h-44"
     style={{
         backgroundImage: "url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjk0MzJlOWQ2ODRlOTkxODg0NzUzZGZkMGM1NDBkYzQxNWMyYTM0ZiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/NS7gPxeumewkWDOIxi/giphy.gif')",
         backgroundPosition: "center",
