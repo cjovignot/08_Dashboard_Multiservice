@@ -72,4 +72,5 @@ body {
 
 .food_link:hover {
   opacity: 80%;
+  transition: 0.2s;
 }
