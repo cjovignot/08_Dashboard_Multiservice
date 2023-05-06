@@ -4,13 +4,8 @@ import Pokemon from "../components/widgets/pokemon";
 import Postit from "../components/widgets/postIt";
 import SpeedRun from "../components/widgets/speedrun";
 import Spotify from "../components/widgets/spotify";
-<<<<<<< HEAD
-// import Food from "./widgets/food";
-// import Emoji from "../components/widgets/emoji";
-=======
 import Food from "./widgets/food";
 import Emoji from "../components/widgets/emoji";
->>>>>>> main
 import Valorant from "../components/widgets/valorant";
 import Weather from "../components/widgets/weather";
 import Zelda from "../components/widgets/zelda";
@@ -57,21 +52,12 @@ const Frame = ({ isLogged }) => {
         <div key="spotify">
           <Spotify isLogged={isLogged} />
         </div>
-<<<<<<< HEAD
-        {/* <div key="food">
-          <Food />
-        </div> */}
-        {/* <div key="emoji">
-          <Emoji />
-        </div> */}
-=======
         <div key="food">
           <Food />
         </div>
         <div key="emoji">
           <Emoji />
         </div>
->>>>>>> main
         <div key="valorant">
           <Valorant />
         </div>
