@@ -142,7 +142,8 @@ const PostIt = () => {
                       }}
                   >
                     {/* <div className="flex justify-end"> */}
-                    <button onClick={() => handleDelete(item._id, setData)} className="btn btn-error w-18 rounded-full absolute text-center absolute ml-72">x</button>
+                    <label onClick={() => handleDelete(item._id, setData)} className="btn btn-sm btn-circle absolute bg-red-700 border-none text-center absolute ml-72 mt-4">✕</label>
+                    {/* <button onClick={() => handleDelete(item._id, setData)} className="btn btn-error w-18 rounded-full absolute text-center absolute ml-72">x</button> */}
                     {/* </div> */}
                     <h1 className="card-title text-xl text-black font-bold mb-5 z-10 ml-10 mt-10">{item.title}</h1>
                     <p className="z-10 text-black ml-10 pb-5 w-60">{item.content}</p>
