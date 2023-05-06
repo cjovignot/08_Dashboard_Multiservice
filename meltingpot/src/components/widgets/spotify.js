@@ -5,7 +5,7 @@ const Spotify = ({ isLogged }) => {
   if (!isLogged) {
     return (
       <div className="card w-128 bg-neutral shadow-xl image-full m-auto m-10 h-44">
-        <div className="card-body">
+        <div className="card-body max-h-44 overflow-scroll">
           <h2 className="card-title">
             Spotify{" "}
             <img
@@ -83,7 +83,7 @@ const Spotify = ({ isLogged }) => {
 
   return (
     <div className="card w-128 bg-neutral shadow-xl image-full m-auto m-10 h-44">
-      <div className="card-body">
+      <div className="card-body max-h-44 overflow-scroll">
         <h2 className="card-title">
           Spotify{" "}
           <img
