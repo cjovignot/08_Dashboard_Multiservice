@@ -26,7 +26,7 @@ const NavBar = ({ isLogged, setIsLogged }) => {
         </button>
       ) : (
         <>
-          <label htmlFor="my-modal-login" className="btn">
+          <label htmlFor="my-modal-login" className="btn ml-3">
             Login
           </label>
           <Login isLogged={isLogged} setIsLogged={setIsLogged} />
