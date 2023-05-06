@@ -22,7 +22,7 @@ const Pokemon = () => {
   return (
     <div className="card w-128 image-full m-auto m-10 h-44"
     style={{
-        backgroundImage: "url('https://1000marcas.net/wp-content/uploads/2020/01/Pokemon-Logo.png')",
+        backgroundImage: "url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjk0MzJlOWQ2ODRlOTkxODg0NzUzZGZkMGM1NDBkYzQxNWMyYTM0ZiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/NS7gPxeumewkWDOIxi/giphy.gif')",
         backgroundPosition: "center",
         backgroundSize: "cover",
     }}>
@@ -31,7 +31,7 @@ const Pokemon = () => {
           <input
             type="text"
             placeholder="Ex: Bulbizarre"
-            className="input input-bordered glass w-full text-black mt-8"
+            className="input input-bordered glass w-full text-black mt-8 placeholder-black"
             value={pkmnName}
             onChange={(e) => setPkmnName(e.target.value)}
           />

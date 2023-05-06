@@ -94,15 +94,20 @@ const PostIt = () => {
 
 
     return (
-        <div className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10">
+        <div className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10"
+        style={{
+            backgroundImage: "url('https://i0.wp.com/www.collectedmiscellany.com/wp-content/uploads/2021/07/background-brown-cork-board-texture-close-up_77190-2560.jpeg?ssl=1')",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+        }}>
           <div id="postitcard" className="flex card-body max-h-44 overflow-scroll">
             {/* {userCookie && */}
             <div className="flex">
                 <form onSubmit={createPostIt} className="flex-col">
                   <div className="flex">
                     <div>
-                      <input type="text" placeholder="Title" className="input glass w-full text-black mb-5" value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
-                      <textarea type="text" placeholder="Content" className="input glass w-full text-black p-3" value={newContent} onChange={(e) => setNewContent(e.target.value)}></textarea>
+                      <input type="text" placeholder="Title" className="input glass w-full text-black mb-5 placeholder-black" value={newTitle} onChange={(e) => setNewTitle(e.target.value)}/>
+                      <textarea type="text" placeholder="Content" className="input glass w-full text-black p-3 placeholder-black" value={newContent} onChange={(e) => setNewContent(e.target.value)}></textarea>
                     </div>
                     <div className="flex-col items-center">
                       <a href="#myList" className="btn w-20 text-center ml-4 mb-5">MyPostIt</a>

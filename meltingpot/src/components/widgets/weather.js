@@ -24,7 +24,12 @@ const Weather = () => {
     }
 
     return (
-        <div className="card w-128 image-full m-auto m-10">
+        <div className="card w-128 image-full m-auto m-10"
+        style={{
+            backgroundImage: "url('https://gifdb.com/images/file/sick-of-this-windy-weather-haax9j0nybc9wrba.gif')",
+            backgroundPosition: "top",
+            backgroundSize: "cover",
+        }}>
 
 
 

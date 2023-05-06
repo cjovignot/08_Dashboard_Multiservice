@@ -34,7 +34,7 @@ const getEmoji = () => {
             onChange={(e) => {
               setName(e.target.value);
             }}
-            className="input input-bordered glass w-full text-black mt-8"
+            className="input input-bordered glass w-full text-black mt-8 placeholder-black"
           />
           {/* <button type="submit"> Search </button> */}
         </form>

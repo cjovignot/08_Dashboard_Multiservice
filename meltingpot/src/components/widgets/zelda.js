@@ -50,9 +50,10 @@ const ZeldaComponent = () => {
   return (
     <div
       className="card w-128 shadow-xl image-full m-auto m-10 h-44"
+      // https://cdn.wallpapersafari.com/60/38/pMJZzn.jpg
       style={{
         backgroundImage:
-          "url('https://cdn.wallpapersafari.com/60/38/pMJZzn.jpg')",
+          "url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTFhYmUzYmU1YmM2NTZhMjljOTI1YjBmZDZkNmM1N2JlZjg5NmNjYiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/rMnd7B3BMASboHgVep/giphy.gif')",
       }}
     >
       {" "}
@@ -61,7 +62,7 @@ const ZeldaComponent = () => {
 
         <form>
           <select
-            className="select w-full max-w-xs text-black"
+            className="input glass w-full text-black"
             type="text"
             id="entry"
             value={entry}

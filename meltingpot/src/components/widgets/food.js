@@ -36,7 +36,7 @@ const getFood = () => {
               onChange={(e) => {
                 setKey(e.target.value);
               }}
-              className="input input-bordered glass w-full text-black mt-8"
+              className="input input-bordered glass w-full text-black mt-8 placeholder-black"
             />
             {/* <button type="submit" className="btn btn-success ml-3 mt-8"> Search </button> */}
           </div>
@@ -46,16 +46,19 @@ const getFood = () => {
             title.map((item, i) => {
               return (
                 <div className="test mb-4" key={i}>
-                  <h2 className="text-xl font-bold">{ item.title }</h2>
-                  <a className="food_link" href= { item.spoonacularSourceUrl } target="_blank"><img 
-                  alt=" "
-                  className="rounded-xl h-40"
-                  style={{
-                      backgroundImage: `url(${item.image})`,
-                      backgroundPosition: "center",
-                      backgroundSize: "cover",
-                  }}
-                  ></img></a>
+                  <div className="flex justify-center">
+                    <h2 className="text-xl font-bold absolute mt-16 text-white">{ item.title }</h2>
+                  </div>
+                  <a className="food_link" href= { item.spoonacularSourceUrl } target="_blank">
+                    <div
+                      className="rounded-xl h-40"
+                      style={{
+                          backgroundImage: `url(${item.image})`,
+                          backgroundPosition: "center",
+                          backgroundSize: "cover",
+                      }}>
+                    </div>
+                  </a>
                 </div>
               );
             })}
