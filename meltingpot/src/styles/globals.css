@@ -23,6 +23,9 @@ body {
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
+.card-body::-webkit-scrollbar{
+  display: none;
+}
 
 
 /* WIDGET FRAME */
