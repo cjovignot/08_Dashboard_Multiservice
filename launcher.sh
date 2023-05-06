@@ -20,14 +20,14 @@ set +o allexport
 gnome-terminal --title="Spotify" -- node-dev spotify/index.js
 
 set -o allexport
-source tasty/.env
+source emoji/.env
 set +o allexport
-gnome-terminal --title="Tasty" -- node-dev tasty/tasty.js
+gnome-terminal --title="Emoji" -- node-dev emoji/emoji.js
 
 set -o allexport
-source tronald_rump/.env
+source food/.env
 set +o allexport
-gnome-terminal --title="Tronald Rump" -- node-dev tronald_rump/tronald_rump.js
+gnome-terminal --title="Food" -- node-dev food/food.js
 
 set -o allexport
 source users/.env
