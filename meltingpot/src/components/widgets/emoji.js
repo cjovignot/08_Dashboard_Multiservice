@@ -19,24 +19,28 @@ const getEmoji = () => {
   };
 
   return (
-    <div className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10">
-      <div className="card-body">
-        <h2 className="card-title"> Emoji </h2>
+    <div className="card w-128 shadow-xl image-full m-auto m-10 h-44"
+    style={{
+        backgroundImage: "url('https://abilitynet.org.uk/sites/abilitynet.org.uk/files/admin/Emojis.png')",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+    }}>
+      <div className="card-body max-h-44 overflow-scroll">
         <form onSubmit={ handleSubmit }>
           <input
             type="text"
-            placeholder="keyword"
+            placeholder="Ex: Happy"
             value={name}
             onChange={(e) => {
               setName(e.target.value);
             }}
-            className="input text-black w-full max-w-xs"
+            className="input input-bordered glass w-full text-black mt-8"
           />
-          <button type="submit"> Search </button>
+          {/* <button type="submit"> Search </button> */}
         </form>
-        <div className="flex-wrap">
+        <div className="flex flex-wrap w-full">
           { emoji && emoji.map((item, i) => {
-            return <div className="w-10" key={i}> {item.emoji} </div>;
+            return <div className="text-2xl m-2" key={i}> {item.emoji} </div>;
           })}
         </div>
       </div>

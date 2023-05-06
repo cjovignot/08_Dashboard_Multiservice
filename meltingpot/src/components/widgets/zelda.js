@@ -49,7 +49,7 @@ const ZeldaComponent = () => {
 
   return (
     <div
-      className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10 h-44"
+      className="card w-128 shadow-xl image-full m-auto m-10 h-44"
       style={{
         backgroundImage:
           "url('https://cdn.wallpapersafari.com/60/38/pMJZzn.jpg')",

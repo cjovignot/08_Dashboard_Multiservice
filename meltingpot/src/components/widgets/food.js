@@ -20,32 +20,42 @@ const getFood = () => {
   };
 
   return (
-    <div className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10">
-      <div className="card-body">
-        <h2 className="card-title"> Food </h2>
+    <div className="card w-128 shadow-xl image-full m-auto m-10 h-44"
+    style={{
+        backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1920px-Good_Food_Display_-_NCI_Visuals_Online.jpg')",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+    }}>
+      <div className="card-body max-h-44 overflow-scroll">
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="keyword"
-            value={keyword}
-            onChange={(e) => {
-              setKey(e.target.value);
-            }}
-            className="input text-black w-full max-w-xs"
-          />
-          <button type="submit"> Search </button>
+          <div className="flex">
+            <input
+              type="text"
+              placeholder="Ex: Chicken"
+              value={keyword}
+              onChange={(e) => {
+                setKey(e.target.value);
+              }}
+              className="input input-bordered glass w-full text-black mt-8"
+            />
+            {/* <button type="submit" className="btn btn-success ml-3 mt-8"> Search </button> */}
+          </div>
         </form>
         <div className="flex-wrap">
           {title &&
             title.map((item, i) => {
               return (
-                <div className="test" key={i}>
-                  { item.title }
-                  <img src={item.image}
-                  width={500}
-                  height={500}
-                  alt="Picture of the recep"></img>
-                  <Link href= { item.spoonacularSourceUrl }> Click to see full recipe </Link>
+                <div className="test mb-4" key={i}>
+                  <h2 className="text-xl font-bold">{ item.title }</h2>
+                  <a className="food_link" href= { item.spoonacularSourceUrl } target="_blank"><img 
+                  alt=" "
+                  className="rounded-xl h-40"
+                  style={{
+                      backgroundImage: `url(${item.image})`,
+                      backgroundPosition: "center",
+                      backgroundSize: "cover",
+                  }}
+                  ></img></a>
                 </div>
               );
             })}

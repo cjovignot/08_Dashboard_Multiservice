@@ -26,12 +26,12 @@ const Pokemon = () => {
         backgroundPosition: "center",
         backgroundSize: "cover",
     }}>
-      <div className="card-body max-h-44 overflow-scroll mt-8">
+      <div className="card-body max-h-44 overflow-scroll">
         <form onSubmit={handleChange}>
           <input
             type="text"
             placeholder="Ex: Bulbizarre"
-            className="input input-bordered glass w-full text-black"
+            className="input input-bordered glass w-full text-black mt-8"
             value={pkmnName}
             onChange={(e) => setPkmnName(e.target.value)}
           />

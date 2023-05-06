@@ -4,7 +4,7 @@ import axios from "axios";
 const Spotify = ({ isLogged }) => {
   if (!isLogged) {
     return (
-      <div className="card w-128 bg-neutral shadow-xl image-full m-auto m-10">
+      <div className="card w-128 bg-neutral shadow-xl image-full m-auto m-10 h-44">
         <div className="card-body">
           <h2 className="card-title">
             Spotify{" "}
@@ -13,7 +13,7 @@ const Spotify = ({ isLogged }) => {
               width={40}
             ></img>
           </h2>
-          <div>Please log in to enable Spotify.</div>
+          <div className="text-center mt-6">Please log in to enable Spotify.</div>
         </div>
       </div>
     );
