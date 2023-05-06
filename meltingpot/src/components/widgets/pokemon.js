@@ -39,9 +39,9 @@ const Pokemon = () => {
 
 
                 {data &&
-            <div className="card w-full pokemon_background text-black p-4 rounded-lg">
-                <div className="flex">
-                    <img src={data.image} alt={data.name} className="w-40"/>
+            <div className="flex  flex-wrap card w-full pokemon_background text-black p-4 rounded-lg">
+                <div className="flex  flex-wrap">
+                    <img src={data.image} alt={data.name} className="w-32"/>
                     <div className="ml-5">
                         <h2 className="card-title text-3xl font-bold">#{data.pokedexId} {data.name}</h2>
                         <p>Generation : {data.apiGeneration}</p>
@@ -67,7 +67,7 @@ const Pokemon = () => {
                         {data && data.stats &&
                         <>
                         <table className="text-center border">
-                            <thead>
+                            <thead className="text-orange-500">
                                 <tr>
                                     <th>HP</th>
                                     <th>ATT</th>
@@ -92,7 +92,7 @@ const Pokemon = () => {
                         }
 
 
-                        <table className="border">
+                        <table className="text-center border">
                             <thead>
                                 <tr>
                                     <th>Multi</th>
