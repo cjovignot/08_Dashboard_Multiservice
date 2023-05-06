@@ -40,7 +40,7 @@ const Frame = ({ isLogged }) => {
         margin={[0, 10]}
         isResizable={false}
       >
-        <div key="pokemon">
+        {/* <div key="pokemon">
           <Pokemon />
         </div>
         <div key="postit">
@@ -48,11 +48,11 @@ const Frame = ({ isLogged }) => {
         </div>
         <div key="speedrun">
           <SpeedRun />
-        </div>
+        </div> */}
         <div key="spotify">
           <Spotify isLogged={isLogged} />
         </div>
-        <div key="food">
+        {/* <div key="food">
           <Food />
         </div>
         <div key="emoji">
@@ -66,7 +66,7 @@ const Frame = ({ isLogged }) => {
         </div>
         <div key="zelda">
           <Zelda />
-        </div>
+        </div> */}
       </ResponsiveGridLayout>
     // </div>
   );
