@@ -16,15 +16,15 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 
 const Frame = ({ isLogged }) => {
   const layout = [
-    { i: "pokemon", x: 6, y: 1, w: 5, h: 2 },
-    { i: "postit", x: 6, y: 0, w: 5, h: 2 },
-    { i: "speedrun", x: 0, y: 2, w: 5, h: 1 },
-    { i: "spotify", x: 0, y: 8, w: 5, h: 3 },
-    { i: "food", x: 0, y: 4, w: 5, h: 1 },
-    { i: "emoji", x: 0, y: 4, w: 5, h: 1 },
-    { i: "valorant", x: 0, y: 6, w: 5, h: 1 },
-    { i: "weather", x: 6, y: 6, w: 5, h: 2 },
-    { i: "zelda", x: 0, y: 6, w: 5, h: 1 },
+    { i: "zelda", x: 0, y: 0, w: 1, h: 2 },
+    { i: "weather", x: 1, y: 0, w: 1, h: 2 },
+    { i: "spotify", x: 2, y: 0, w: 1, h: 2 },
+    { i: "pokemon", x: 0, y: 1, w: 1, h: 2 },
+    { i: "postit", x: 1, y: 1, w: 1, h: 2 },
+    { i: "food", x: 2, y: 1, w: 1, h: 2 },
+    { i: "emoji", x: 0, y: 2, w: 1, h: 2 },
+    { i: "valorant", x: 1, y: 2, w: 1, h: 2 },
+    { i: "speedrun", x: 2, y: 2, w: 1, h: 2 },
   ];
 
 
