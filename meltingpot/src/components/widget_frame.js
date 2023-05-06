@@ -52,10 +52,10 @@ const Frame = ({ isLogged }) => {
         <div key="spotify">
           <Spotify isLogged={isLogged} />
         </div>
-        <div key="tasty">
+        <div key="food">
           <Food />
         </div>
-        <div key="trump">
+        <div key="emoji">
           <Emoji />
         </div>
         <div key="valorant">
