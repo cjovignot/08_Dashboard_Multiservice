@@ -8,7 +8,7 @@ const port = process.env.SPEEDRUN_PORT;
 const url_games = process.env.SPEEDRUN_API_URL_GAMES;
 const url_cats = process.env.SPEEDRUN_API_URL_CATS;
 const url_records = process.env.SPEEDRUN_API_URL_RECORDS;
-const url__runners = process.env.SPEEDRUN_API_URL_RUNNERS;
+const url_runners = process.env.SPEEDRUN_API_URL_RUNNERS;
 
 app.use(cors());
 
@@ -16,29 +16,61 @@ app.get('/', async (req, res) => {
     const { name: gameName } = req.query
     try {
         const response_games = await axios.get(`${url_games}${gameName}`);
-        // console.log(response_games.data)
         const GAMEID = response_games.data.data[0].id;
         const GAMENAME = response_games.data.data[0].names.international;
-        const GAMEPIC = response_games.data.data[0].assets["cover-tiny"].uri;
+        const GAMECOVER = response_games.data.data[0].assets["cover-tiny"].uri;
         
         const response_cat = await axios.get(`${url_cats}${GAMEID}/categories?miscellaneous=no`);
         const CATID = response_cat.data.data[0].id;
-        //console.log(CATID)
         
         const response_records = await axios.get(`${url_records}${CATID}/records`);
-        const tmp = response_records.data.data[0].runs;
-        // const RUNNERID = tmp.
-        console.log(tmp);
+        const RECORDS = response_records.data.data[0].runs;
+        console.log(RECORDS)
+        
+        // 1st PLACE DATA
+        const RUNNERID_GOLD = RECORDS[0].run.players[0].id;
+        const RUNNERTIME_GOLD = RECORDS[0].run.times.primary_t;
+        const response_runner_gold = await axios.get(`${url_runners}${RUNNERID_GOLD}`);
+        console.log(response_runner_gold);
+        const RUNNERNAME_GOLD = response_runner_gold.data.data.names.international;
 
-        // const response_runners = await axios.get(`${url_runners}${RUNNERID}`)
+        // 2nd PLACE DATA
+        const RUNNERID_SILVER = RECORDS[1].run.players[0].id;
+        const RUNNERTIME_SILVER = RECORDS[1].run.times.primary_t;
+        const response_runner_silver = await axios.get(`${url_runners}${RUNNERID_SILVER}`);
+        console.log(response_runner_silver);
+        const RUNNERNAME_SILVER = response_runner_silver.data.data.names.international;
+
+        // 3rd PLACE DATA
+        const RUNNERID_BRONZE = RECORDS[2].run.players[0].id;
+        const RUNNERTIME_BRONZE = RECORDS[2].run.times.primary_t;
+        const response_runner_bronze = await axios.get(`${url_runners}${RUNNERID_BRONZE}`);
+        console.log(response_runner_bronze);
+        const RUNNERNAME_BRONZE = response_runner_bronze.data.data.names.international;
+
 
         res.json({
             "-message" : "📥 JSON imported successfully !",
-            "gameID": GAMEID,
-            "catID": CATID,
-            "gameName": GAMENAME,
-            "gamePic": GAMEPIC,
-            tmp
+            "GAMEID": GAMEID,
+            "GAMENAME": GAMENAME,
+            "GAMECOVER": GAMECOVER,
+            "CATID": CATID,
+            "1-RUNNER_GOLD":{
+                "RUNNERID_GOLD": RUNNERID_GOLD,
+                "RUNNERNAME_GOLD": RUNNERNAME_GOLD,
+                "RUNNERTIME_GOLD": RUNNERTIME_GOLD,
+            },
+            "2-RUNNER_SILVER":{
+                "RUNNERID_SILVER": RUNNERID_SILVER,
+                "RUNNERNAME_SILVER": RUNNERNAME_SILVER,
+                "RUNNERTIME_SILVER": RUNNERTIME_SILVER,
+            },
+            "3-RUNNER_BRONZE":{
+                "RUNNERID_BRONZE": RUNNERID_BRONZE, 
+                "RUNNERNAME_BRONZE": RUNNERNAME_BRONZE,
+                "RUNNERTIME_BRONZE": RUNNERTIME_BRONZE  ,
+            },
+            // RECORDS
         });
     }
     catch (error) {
