@@ -38,21 +38,21 @@ const Pokemon = () => {
         </form>
 
 
-                {data &&
+        {data &&
             <div className="flex  flex-wrap card w-full pokemon_background text-black p-4 rounded-lg">
                 <div className="flex  flex-wrap">
-                    <img src={data.image} alt={data.name} className="w-32"/>
-                    <div className="ml-5">
-                        <h2 className="card-title text-3xl font-bold">#{data.pokedexId} {data.name}</h2>
+                    <img src={data.image} alt={data.name} className="w-40"/>
+                    <div className="ml-5 mt-5">
+                        <h2 className="card-title text-2xl font-bold">#{data.pokedexId} {data.name}</h2>
                         <p>Generation : {data.apiGeneration}</p>
                         {data.apiPreEvolution === "none" &&
-                            <p>Pokemon de Base</p>
+                            <p><b>Pokemon de Base</b></p>
                         }
                         {data && data.apiPreEvolution != "none" &&
-                            <p>Base : #{data.apiPreEvolution.pokedexIdd} {data.apiPreEvolution.name}</p>
+                            <p><b>Base :</b> #{data.apiPreEvolution.pokedexIdd} {data.apiPreEvolution.name}</p>
                         }
                         {data && data.apiEvolutions.map((item, i) => (
-                            <p key={i}>Evolution sup. : #{item.pokedexId} {item.name}</p>
+                            <p key={i}><b>Stage sup. :</b> #{item.pokedexId} {item.name}</p>
                         ))}
                     </div>
                 </div>
@@ -65,55 +65,27 @@ const Pokemon = () => {
                         </div>
                         
                         {data && data.stats &&
-                        <>
-                        <table className="text-center border">
-                            <thead className="text-orange-500">
-                                <tr>
-                                    <th>HP</th>
-                                    <th>ATT</th>
-                                    <th>DEF</th>
-                                    <th>AT_SPE</th>
-                                    <th>DEF_SPE</th>
-                                    <th>SPEED</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{data.stats.HP}</td>
-                                    <td>{data.stats.attack}</td>
-                                    <td>{data.stats.defense}</td>
-                                    <td>{data.stats.special_attack}</td>
-                                    <td>{data.stats.special_defense}</td>
-                                    <td>{data.stats.speed}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        </>
+                            <div className="flex-col text-orange-500 border p-2 rounded-lg w-auto">
+                                <div className="flex text-l font-bold">HP : <div className="ml-2 text-white">{data.stats.HP}</div></div>
+                                <div className="flex text-l font-bold">ATT : <div className="ml-2 text-white">{data.stats.attack}</div></div>
+                                <div className="flex text-l font-bold">DEF : <div className="ml-2 text-white">{data.stats.defense}</div></div>
+                                <div className="flex text-l font-bold">AT_SPE : <div className="ml-2 text-white">{data.stats.special_attack}</div></div>
+                                <div className="flex text-l font-bold">DEF_SPE : <div className="ml-2 text-white">{data.stats.special_defense}</div></div>
+                                <div className="flex text-l font-bold">SPEED : <div className="ml-2 text-white">{data.stats.speed}</div></div>
+                            </div>
                         }
 
-
-                        <table className="text-center border">
-                            <thead>
-                                <tr>
-                                    <th>Multi</th>
-                                    <th>Effect</th>
-                                    <th>Type</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {data && data.apiResistances.map((item, i) => (
-                                    // <p key={i}>{item.name} {item.damage_multiplier}</p>
-                                    <tr>
-                                        <td>{item.damage_multiplier}</td>
-                                        <td>{item.damage_relation}</td>
-                                        <td>{item.name}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                        {data && data.apiResistances.map((item, i) => (
+                            <div className="flex flex-wrap text-orange-500 border p-2 rounded-lg glass">
+                                <div className="flex flex-wrap text-l font-bold">{item.name}
+                                    <div className="ml-2 text-white">{item.damage_relation}</div>
+                                    <div className="ml-2 text-white">{item.damage_multiplier}</div>
+                                </div>
+                            </div>
+                        ))}
                 </div>
             </div>
-                }
+        }
       </div>
     </div>
   );

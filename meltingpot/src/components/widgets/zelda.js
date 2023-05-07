@@ -58,27 +58,29 @@ const ZeldaComponent = () => {
     >
       {" "}
       <div className="card-body max-h-44 overflow-scroll">
-        <h2 className="card-title">Zelda</h2>
+        <div className="flex w-full mt-8">
+          <img src="https://www.pngmart.com/files/4/The-Legend-of-Zelda-Logo-PNG-Clipart.png" className="w-20 mr-4"></img>
 
-        <form>
-          <select
-            className="input glass w-full text-black"
-            type="text"
-            id="entry"
-            value={entry}
-            onChange={handleInputChange}
-            placeholder="Select monster entry"
-          >
-            <option className="text-black" value="" disabled>
-              Select a monster
-            </option>
-            {monsters.map((monster, index) => (
-              <option className="text-black" key={index} value={monster.id}>
-                {monster.name}
+          <form className="w-full">
+            <select
+              className="input glass w-full text-black"
+              type="text"
+              id="entry"
+              value={entry}
+              onChange={handleInputChange}
+              placeholder="Select monster entry"
+            >
+              <option className="text-black" value="" disabled>
+                Select a monster
               </option>
-            ))}
-          </select>
-        </form>
+              {monsters.map((monster, index) => (
+                <option className="text-black" key={index} value={monster.id}>
+                  {monster.name}
+                </option>
+              ))}
+            </select>
+          </form>
+        </div>
         {loading && <div>Loading...</div>}
 
         {data && (
