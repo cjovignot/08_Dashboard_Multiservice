@@ -13,7 +13,7 @@ const url_runners = process.env.SPEEDRUN_API_URL_RUNNERS;
 app.use(cors());
 
 app.get('/', async (req, res) => {
-    const { name: gameName } = req.query
+    const { name: gameName } = req.query;
     try {
         const response_games = await axios.get(`${url_games}${gameName}`);
         const GAMEID = response_games.data.data[0].id;

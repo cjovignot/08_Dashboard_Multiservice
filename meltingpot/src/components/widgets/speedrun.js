@@ -10,18 +10,18 @@ const speedrun = () => {
     // 1st Place Data
     const [runnerNameGold, setRunnerNameGold] = useState('');
     const [runnerTimeGold, setRunnerTimeGold] = useState('');
-    const timeGoldMinutes = Math.floor(runnerTimeGold/60);
-    const timeGoldSeconds = (runnerTimeGold - timeGoldMinutes * 60);
+    // const timeGoldMinutes = Math.floor(runnerTimeGold/60);
+    // const timeGoldSeconds = (runnerTimeGold - timeGoldMinutes * 60);
     // 2nd Place Data
     const [runnerNameSilver, setRunnerNameSilver] = useState('');
     const [runnerTimeSilver, setRunnerTimeSilver] = useState('');
-    const timeSilverMinutes = Math.floor(runnerTimeSilver/60);
-    const timeSilverSeconds = (runnerTimeSilver - timeSilverMinutes * 60);
+    // const timeSilverMinutes = Math.floor(runnerTimeSilver/60);
+    // const timeSilverSeconds = (runnerTimeSilver - timeSilverMinutes * 60);
     // 3rd Place Data
     const [runnerNameBronze, setRunnerNameBronze] = useState('');
     const [runnerTimeBronze, setRunnerTimeBronze] = useState('');
-    const timeBronzeMinutes = Math.floor(runnerTimeBronze/60);
-    const timeBronzeSeconds = (runnerTimeBronze - timeBronzeMinutes * 60);
+    // const timeBronzeMinutes = Math.floor(runnerTimeBronze/60);
+    // const timeBronzeSeconds = (runnerTimeBronze - timeBronzeMinutes * 60);
 
     const handleChange = async (e) => {
         e.preventDefault();
