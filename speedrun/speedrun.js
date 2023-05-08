@@ -22,6 +22,7 @@ app.get('/', async (req, res) => {
         
         const response_cat = await axios.get(`${url_cats}${GAMEID}/categories?miscellaneous=no`);
         const CATID = response_cat.data.data[0].id;
+        const CATNAME = response_cat.data.data[0].name;
         
         const response_records = await axios.get(`${url_records}${CATID}/records`);
         const RECORDS = response_records.data.data[0].runs;
@@ -55,6 +56,7 @@ app.get('/', async (req, res) => {
             "GAMENAME": GAMENAME,
             "GAMECOVER": GAMECOVER,
             "CATID": CATID,
+            "CATNAME": CATNAME,
             "1-RUNNER_GOLD":{
                 "RUNNERID_GOLD": RUNNERID_GOLD,
                 "RUNNERNAME_GOLD": RUNNERNAME_GOLD,
