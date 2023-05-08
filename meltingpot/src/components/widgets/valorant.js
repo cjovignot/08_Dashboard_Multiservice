@@ -14,9 +14,10 @@ const Valorant = () => {
 
         try {
             const response = await axios.get(`http://localhost:3004/${ID}`);
-            setMapName(response.MAPNAME);
-            setMapCoord(response.MAPCOORD);
-            setMapURL(response.MAPURL);
+            console.log( "*****", response)
+            setMapName(response.data.MAPNAME);
+            setMapCoord(response.data.APCOORD);
+            setMapURL(response.data.MAPURL);
 
         } catch (error) {
             console.error(error);
