@@ -25,8 +25,9 @@ const Valorant = () => {
     }
 
     return (
-        <div className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10">
-            <div className="card-body">
+        <div className="card w-auto shadow-xl image-full ml-10 mr-10 mb-10 h-44">
+              <div className="card-body max-h-44 overflow-scroll">
+        {/* <div className="flex w-full mt-8"> */}
                 <h2 className="card-title">VALORANT : 🗺️ Strategize </h2>
 
                 <div className="Main_ctnr">
@@ -45,6 +46,7 @@ const Valorant = () => {
                 <div>{mapCoord}</div>
                 <div className="mapName">{mapName}</div>
                 </div>
+                {/* </div> */}
             </div>
         </div>
     );

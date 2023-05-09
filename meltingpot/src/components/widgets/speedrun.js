@@ -52,9 +52,9 @@ const speedrun = () => {
       }
 
     return (
-        <div className="card w-auto bg-base-100 shadow-xl image-full  ml-10 mr-10 mb-10">
+        <div className="card w-auto shadow-xl image-full ml-10 mr-10 mb-10 h-44" >
 
-            <div className="card-body overflow-scroll max-h-44">
+            <div className="card-body max-h-44 overflow-scroll">
                 <h2 className="card-title">⚡ speedrun.com</h2>
 
                 <form className="form_ctnr flexrow" onSubmit={handleChange}>
