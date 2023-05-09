@@ -52,9 +52,9 @@ const speedrun = () => {
       }
 
     return (
-        <div className="card w-128 bg-base-100 shadow-xl image-full m-auto m-10">
+        <div className="card w-auto bg-base-100 shadow-xl image-full  ml-10 mr-10 mb-10">
 
-            <div className="card-body">
+            <div className="card-body overflow-scroll max-h-44">
                 <h2 className="card-title">⚡ speedrun.com</h2>
 
                 <form className="form_ctnr flexrow" onSubmit={handleChange}>
@@ -68,7 +68,7 @@ const speedrun = () => {
 
                 <div className="gameData_ctnr flex-column items-center">
                     <div className="gameCover_ctnr"><img src={gameCover}></img></div>
-                    <div className="gameTitle_ctnr">{gameName} - {catName}</div>
+                    <div className="gameTitle_ctnr text-xl font-bold">{gameName} - {catName}</div>
                 </div>
 
                 <div className="top_ctnr justify-center">

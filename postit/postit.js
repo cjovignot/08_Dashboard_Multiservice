@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 
+const Cookies = require('js-cookie');
+
 const PostIt = require('./models/postit');
 
 require('dotenv').config();
@@ -30,10 +32,11 @@ mongoose.connect(mongoUrl)
 
 // CREATE A POSTIT
 app.post('/new', (req, res) => {
-  const { title, content } = req.body;
+  const { title, content, user_id } = req.body;
   const newPostIt = new PostIt({
     title,
     content,
+    user_id,
   });
   newPostIt.save()
     .then(() => {
@@ -50,28 +53,27 @@ app.post('/new', (req, res) => {
 // END CREATE A POSTIT
 
 // FIND ALL POSTITS
-app.get('/', (req, res) => {
-  PostIt.find().then(
-    (PostIts) => {
-      res.status(200).json(PostIts);
-    }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
-});
+// app.get('/', async (req, res) => {
+//   PostIt.find()
+//   .then((postIts) => {
+//     res.status(200).json(postIts);
+//   })
+//   .catch(
+//     (error) => {
+//       res.status(400).json({
+//         error: error
+//       });
+//     }
+//   );
+// });
 // END FIND ALL POSTITS
 
-// FIND A POSTIT BY ITS TITLE
-app.get('/:title', (req, res) => {
-  PostIt.findOne({
-    title: req.params.title
-  }).then(
-    (myPostIt) => {
-      res.status(200).json(myPostIt);
+// FIND ALL POSTIT BY USER ID
+app.get('/user/:userId', (req, res) => {
+  const { userId } = req.params;
+  PostIt.find({ user_id: userId }).then(
+    (myPostsIt) => {
+      res.status(200).json(myPostsIt);
     }
   ).catch(
     (error) => {
@@ -81,7 +83,7 @@ app.get('/:title', (req, res) => {
     }
   );
 });
-// END FIND A POSTIT BY ITS TITLE
+// END FIND A POSTIT BY USER ID
 
 // DELETE POSTIT BY ID
 app.use('/delete/:id', (req, res) => {
