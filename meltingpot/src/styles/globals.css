@@ -18,21 +18,66 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  scroll-behavior: smooth;
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+.card-body::-webkit-scrollbar{
+  display: none;
 }
 
+@media only screen and (max-width: 600px) {
+  html, body {
+    min-width: 900px;
+  }
+}
 
 /* WIDGET FRAME */
 #widget_frame {
   display: flex;
-  flex-wrap: wrap;
   margin: auto;
-  width: 80%;
-  justify-content: space-between;
-  height: 90vh;
+  scroll-behavior: smooth;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+
+.widget {
+  border: 1px solid #ddd;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+.post_it {
+  background-image: url('http://clipart-library.com/images/kcKoj8p5i.png');
+  background-size: auto;
+}
+
+.pokemon_background {
+  background-color: rgba(0, 0, 0, 0.424);
+  color: white;
+}
+
+#postitcard {
+  scroll-behavior: smooth;
+}
+
+#spotify_button {
+  background-color: black;
+  width: 200px;
+  margin: auto;
+  padding: 10px;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+#spotify_button:hover {
+  border: 1px white solid;
+  transition: 0.2s;
+}
+
+.food_link:hover {
+  opacity: 80%;
+  transition: 0.2s;
 }

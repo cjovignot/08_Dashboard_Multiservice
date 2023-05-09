@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { WidthProvider, Responsive } from "react-grid-layout";
 import Pokemon from "../components/widgets/pokemon";
 import Postit from "../components/widgets/postIt";
 import SpeedRun from "../components/widgets/speedrun";
 import Spotify from "../components/widgets/spotify";
-import Tasty from "../components/widgets/tasty";
-import Trump from "../components/widgets/trump";
+import Food from "./widgets/food";
+import Emoji from "../components/widgets/emoji";
 import Valorant from "../components/widgets/valorant";
 import Weather from "../components/widgets/weather";
 import Zelda from "../components/widgets/zelda";
@@ -15,72 +15,48 @@ import "react-resizable/css/styles.css";
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 const Frame = ({ isLogged }) => {
-  const [layout, setLayout] = useState([
-    { i: "pokemon", x: 0, y: 0, w: 5, h: 2 },
-    { i: "postit", x: 6, y: 0, w: 5, h: 2 },
-    { i: "speedrun", x: 0, y: 2, w: 5, h: 2 },
-    { i: "spotify", x: 0, y: 8, w: 5, h: 2 },
-    { i: "tasty", x: 0, y: 4, w: 5, h: 2 },
-    { i: "trump", x: 6, y: 4, w: 5, h: 2 },
-    { i: "valorant", x: 0, y: 6, w: 5, h: 2 },
-    { i: "weather", x: 6, y: 6, w: 5, h: 2 },
-    { i: "zelda", x: 6, y: 2, w: 5, h: 2 },
-  ]);
+  const layout = [
+    { i: "zelda", x: 0, y: 0, w: 1, h: 2 },
+    { i: "weather", x: 1, y: 0, w: 1, h: 2 },
+    { i: "spotify", x: 2, y: 0, w: 1, h: 2 },
+    { i: "pokemon", x: 0, y: 1, w: 1, h: 2 },
+    { i: "postit", x: 1, y: 1, w: 1, h: 2 },
+    { i: "food", x: 2, y: 1, w: 1, h: 2 },
+    { i: "emoji", x: 0, y: 2, w: 1, h: 2 },
+    { i: "valorant", x: 1, y: 2, w: 1, h: 2 },
+    { i: "speedrun", x: 2, y: 2, w: 1, h: 2 },
+    ];
 
-  const onLayoutChange = (newLayout) => {
-    let updatedLayout = [];
-    let prevY = 0;
-
-    newLayout.forEach((item, index) => {
-      const element = document.getElementById(item.i);
-
-      if (element) {
-        const height = window
-          .getComputedStyle(element)
-          .getPropertyValue("height");
-        const newHeight = Math.ceil(parseInt(height, 10) / 80);
-
-        if (index > 0) {
-          prevY += updatedLayout[index - 1].h;
-        }
-
-        updatedLayout.push({ ...item, h: newHeight, y: prevY });
-      } else {
-        updatedLayout.push(item);
-      }
-    });
-
-    setLayout(updatedLayout);
-  };
 
   return (
-    <div id="widget_frame" className="max-w-full">
       <ResponsiveGridLayout
-        className="layout"
+        id="widget_frame"
+        className="layout bg-gradient-to-r from-sky-500 to-indigo-500"
         layouts={{ lg: layout }}
-        breakpoints={{ lg: 1200 }}
-        cols={{ lg: 12 }}
-        rowHeight={80}
-        width={400}
-        margin={[10, 10]}
+        breakpoints={{ lg: 3 }}
+        cols={{ lg: 3 }}
+        rowHeight={90}
+        width="800px"
+        margin={[0, 10]}
         isResizable={false}
-        autoSize={true}
-        onLayoutChange={onLayoutChange}
       >
         <div key="pokemon">
           <Pokemon />
         </div>
         <div key="postit">
-          <Postit />
+          <Postit isLogged={isLogged}/>
         </div>
         <div key="speedrun">
           <SpeedRun />
         </div>
-        <div key="tasty">
-          <Tasty />
+        <div key="spotify">
+          <Spotify isLogged={isLogged} />
         </div>
-        <div key="trump">
-          <Trump />
+        <div key="food">
+          <Food />
+        </div>
+        <div key="emoji">
+          <Emoji />
         </div>
         <div key="valorant">
           <Valorant />
@@ -91,11 +67,7 @@ const Frame = ({ isLogged }) => {
         <div key="zelda">
           <Zelda />
         </div>
-        <div key="spotify">
-          <Spotify isLogged={isLogged} />
-        </div>
       </ResponsiveGridLayout>
-    </div>
   );
 };
 
