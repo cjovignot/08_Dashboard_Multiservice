@@ -68,7 +68,7 @@ const speedrun = () => {
 
                 <div className="gameData_ctnr flex-column items-center">
                     <div className="gameCover_ctnr"><img src={gameCover}></img></div>
-                    <div className="gameTitle_ctnr">{gameName} - {catName}</div>
+                    <div className="gameTitle_ctnr text-xl font-bold">{gameName} - {catName}</div>
                 </div>
 
                 <div className="top_ctnr justify-center">
