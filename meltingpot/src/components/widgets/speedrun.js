@@ -7,6 +7,7 @@ const speedrun = () => {
     const [gameCover, setGameCover] = useState('');
     const [gameName, setGameName] = useState('');
     const [catName, setCatName] = useState('');
+    const [BG, setBackground] = useState('');
     // 1st Place Data
     const [runnerNameGold, setRunnerNameGold] = useState('');
     const [runnerTimeGold, setRunnerTimeGold] = useState('');
@@ -38,6 +39,7 @@ const speedrun = () => {
             setRunnerTimeSilver(response.data["2-RUNNER_SILVER"].RUNNERTIME_SILVER);
             setRunnerNameBronze(response.data["3-RUNNER_BRONZE"].RUNNERNAME_BRONZE);
             setRunnerTimeBronze(response.data["3-RUNNER_BRONZE"].RUNNERTIME_BRONZE);
+            setBackground(response.data.Background);
 
         } catch (error) {
             console.error(error);
@@ -52,7 +54,14 @@ const speedrun = () => {
       }
 
     return (
-        <div className="card w-auto shadow-xl image-full ml-10 mr-10 mb-10 h-44" >
+        <div className="card w-auto shadow-xl image-full ml-10 mr-10 mb-10 h-44" 
+        
+        style={{
+        backgroundImage: `url("${BG}")`,
+        backgroundSize: "cover"      
+        }}>
+
+
 
             <div className="card-body max-h-44 overflow-scroll">
                 <h2 className="card-title">⚡ speedrun.com</h2>

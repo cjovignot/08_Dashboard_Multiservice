@@ -19,6 +19,7 @@ app.get('/', async (req, res) => {
         const GAMEID = response_games.data.data[0].id;
         const GAMENAME = response_games.data.data[0].names.international;
         const GAMECOVER = response_games.data.data[0].assets["cover-tiny"].uri;
+        const BG = response_games.data.data[0].assets["background"].uri;
         
         const response_cat = await axios.get(`${url_cats}${GAMEID}/categories?miscellaneous=no`);
         const CATID = response_cat.data.data[0].id;
@@ -52,6 +53,7 @@ app.get('/', async (req, res) => {
 
         res.json({
             "-message" : "📥 JSON imported successfully !",
+            "Background": BG,
             "GAMEID": GAMEID,
             "GAMENAME": GAMENAME,
             "GAMECOVER": GAMECOVER,
